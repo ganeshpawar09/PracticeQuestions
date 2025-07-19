@@ -2,15 +2,19 @@
 
 namespace PracticeQuestions.Modules
 {
-    class Loop
+    internal class LoopQue
     {
         internal void CalculateFactorial()
         {
-            Console.Write("Enter a number to find factorial: ");
-            if (!int.TryParse(Console.ReadLine().Trim(), out int num) || num < 0)
+            int num;
+
+            while (true)
             {
-                Console.WriteLine("Enter a valid non-negative integer.");
-                return;
+                Console.Write("Enter a number to find factorial: ");
+                if (int.TryParse(Console.ReadLine().Trim(), out num) && num >= 0)
+                    break;
+
+                Console.WriteLine("Invalid input. Please enter a non-negative integer.");
             }
 
             long factorial = 1;
@@ -58,30 +62,34 @@ namespace PracticeQuestions.Modules
 
         internal void PrintTrianglePattern()
         {
-            Console.Write("Enter number of rows for the triangle pattern: ");
-            if (!int.TryParse(Console.ReadLine().Trim(), out int num) || num <= 0)
+            int num;
+
+            while (true)
             {
-                Console.WriteLine("Enter a valid positive number.");
-                return;
+                Console.Write("Enter number of rows for the triangle pattern: ");
+                if (int.TryParse(Console.ReadLine().Trim(), out num) && num > 0)
+                    break;
+
+                Console.WriteLine("Invalid input. Please enter a positive integer.");
             }
 
+            int currentNum = 1;
+            for (int row = 1; row <= num; row++)
             {
-                int currentNum = 1;
-                for (int row = 1; row <= num; row++)
-                {
-                    int col = 1;
+                int col = 1;
 
-                    for (; col <= num-row; col++)
-                    {
-                        Console.Write(" ");
-                    }
-                    for (; col <= num; col++)
-                    {
-                        Console.Write(currentNum + " ");
-                        currentNum++;
-                    }
-                    Console.WriteLine();
+                for (; col <= num - row; col++)
+                {
+                    Console.Write(" ");
                 }
+
+                for (; col <= num; col++)
+                {
+                    Console.Write(currentNum + " ");
+                    currentNum++;
+                }
+
+                Console.WriteLine();
             }
         }
 

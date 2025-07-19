@@ -2,44 +2,44 @@
 
 namespace PracticeQuestions.Modules
 {
-    internal class Decision
+    internal class DecisionQue
     {
         internal void CheckCharacterType()
         {
-            Console.Write("Enter your Character: ");
-            string input = Console.ReadLine().Trim();
+            string input;
 
-            if (string.IsNullOrEmpty(input) || input.Length != 1)
+            while (true)
             {
+                Console.Write("Enter your Character: ");
+                input = Console.ReadLine().Trim();
+
+                if (!string.IsNullOrEmpty(input) && input.Length == 1)
+                    break;
+
                 Console.WriteLine("Please enter a single character.");
-                return;
             }
 
             char c = input[0];
 
-            if (c >= 'a' && c <= 'z')
-            {
+            if (char.IsLower(c))
                 Console.WriteLine("Character is a lowercase alphabet.");
-            }
-            else if ((c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9'))
-            {
+            else if (char.IsLetterOrDigit(c))
                 Console.WriteLine("Character is not a special symbol.");
-            }
             else
-            {
                 Console.WriteLine("Character is a special symbol.");
-            }
-
-
         }
+
         internal void CheckPalindromeNumber()
         {
-            Console.Write("Enter a five-digit number: ");
+            int originalNum;
 
-            if (!int.TryParse(Console.ReadLine().Trim(), out int originalNum) || originalNum < 10000 || originalNum > 99999)
+            while (true)
             {
+                Console.Write("Enter a five-digit number: ");
+                if (int.TryParse(Console.ReadLine().Trim(), out originalNum) && originalNum >= 10000 && originalNum <= 99999)
+                    break;
+
                 Console.WriteLine("Please enter a valid five-digit number.");
-                return;
             }
 
             int reverseNum = 0, temp = originalNum;
@@ -52,32 +52,31 @@ namespace PracticeQuestions.Modules
             }
 
             if (originalNum == reverseNum)
-            {
-                Console.WriteLine("Reverse numbers is equal to original. Number is Palindrome");
-            }
+                Console.WriteLine("Reverse number is equal to original. Number is Palindrome");
             else
-            {
                 Console.WriteLine("Reverse number is not equal to original. Number is not Palindrome");
-            }
         }
+
         internal void CheckCollinearPoints()
         {
             int[,] points = new int[3, 2];
 
             for (int i = 0; i < 3; i++)
             {
-                Console.Write($"Enter x coordinate of point {i + 1}: ");
-                if (!int.TryParse(Console.ReadLine(), out points[i, 0]))
+                while (true)
                 {
+                    Console.Write($"Enter x coordinate of point {i + 1}: ");
+                    if (int.TryParse(Console.ReadLine(), out points[i, 0]))
+                        break;
                     Console.WriteLine("Invalid input for x coordinate.");
-                    return;
                 }
 
-                Console.Write($"Enter y coordinate of point {i + 1}: ");
-                if (!int.TryParse(Console.ReadLine(), out points[i, 1]))
+                while (true)
                 {
+                    Console.Write($"Enter y coordinate of point {i + 1}: ");
+                    if (int.TryParse(Console.ReadLine(), out points[i, 1]))
+                        break;
                     Console.WriteLine("Invalid input for y coordinate.");
-                    return;
                 }
             }
 
@@ -95,25 +94,32 @@ namespace PracticeQuestions.Modules
 
         internal void DetermineSteelGrade()
         {
-            Console.Write("Enter hardness: ");
-            if (!int.TryParse(Console.ReadLine(), out int hardness))
+            int hardness;
+            double carbon;
+            int tensile;
+
+            while (true)
             {
+                Console.Write("Enter hardness: ");
+                if (int.TryParse(Console.ReadLine(), out hardness))
+                    break;
                 Console.WriteLine("Invalid input for hardness.");
-                return;
             }
 
-            Console.Write("Enter carbon content: ");
-            if (!double.TryParse(Console.ReadLine(), out double carbon))
+            while (true)
             {
+                Console.Write("Enter carbon content: ");
+                if (double.TryParse(Console.ReadLine(), out carbon))
+                    break;
                 Console.WriteLine("Invalid input for carbon content.");
-                return;
             }
 
-            Console.Write("Enter tensile strength: ");
-            if (!int.TryParse(Console.ReadLine(), out int tensile))
+            while (true)
             {
+                Console.Write("Enter tensile strength: ");
+                if (int.TryParse(Console.ReadLine(), out tensile))
+                    break;
                 Console.WriteLine("Invalid input for tensile strength.");
-                return;
             }
 
             bool condition1 = hardness > 50;
@@ -138,18 +144,22 @@ namespace PracticeQuestions.Modules
 
         internal void PerformCalculator()
         {
-            Console.Write("Enter first number: ");
-            if (!int.TryParse(Console.ReadLine(), out int num1))
+            int num1, num2, choice;
+
+            while (true)
             {
+                Console.Write("Enter first number: ");
+                if (int.TryParse(Console.ReadLine(), out num1))
+                    break;
                 Console.WriteLine("Invalid input for first number.");
-                return;
             }
 
-            Console.Write("Enter second number: ");
-            if (!int.TryParse(Console.ReadLine(), out int num2))
+            while (true)
             {
+                Console.Write("Enter second number: ");
+                if (int.TryParse(Console.ReadLine(), out num2))
+                    break;
                 Console.WriteLine("Invalid input for second number.");
-                return;
             }
 
             Console.WriteLine("Menu:");
@@ -158,11 +168,12 @@ namespace PracticeQuestions.Modules
             Console.WriteLine("3. Multiplication");
             Console.WriteLine("4. Division");
 
-            Console.Write("Enter your choice (1-4): ");
-            if (!int.TryParse(Console.ReadLine(), out int choice))
+            while (true)
             {
-                Console.WriteLine("Invalid menu choice.");
-                return;
+                Console.Write("Enter your choice (1-4): ");
+                if (int.TryParse(Console.ReadLine(), out choice) && choice >= 1 && choice <= 4)
+                    break;
+                Console.WriteLine("Invalid menu choice. Please choose between 1 and 4.");
             }
 
             switch (choice)
@@ -181,9 +192,6 @@ namespace PracticeQuestions.Modules
                         Console.WriteLine("Division = " + (num1 / (double)num2));
                     else
                         Console.WriteLine("Cannot divide by zero.");
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice.");
                     break;
             }
         }

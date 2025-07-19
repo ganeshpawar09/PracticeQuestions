@@ -2,15 +2,19 @@
 
 namespace PracticeQuestions.Modules
 {
-    internal class BasicInputOutput
+    internal class BasicInputOutputQue
     {
         internal void CalculateGrossSalary()
         {
-            Console.Write("Enter your base salary: ");
-            if (!decimal.TryParse(Console.ReadLine(), out decimal baseSalary) || baseSalary < 0)
+            decimal baseSalary;
+
+            while (true)
             {
+                Console.Write("Enter your base salary: ");
+                if (decimal.TryParse(Console.ReadLine(), out baseSalary) && baseSalary >= 0)
+                    break;
+
                 Console.WriteLine("Invalid input. Base salary must be a non-negative number.");
-                return;
             }
 
             decimal dearnessAllowance = baseSalary * 0.40m;
@@ -22,11 +26,15 @@ namespace PracticeQuestions.Modules
 
         internal void ConvertDistance()
         {
-            Console.Write("Enter distance in kilometers: ");
-            if (!double.TryParse(Console.ReadLine(), out double distanceKm) || distanceKm < 0)
+            double distanceKm;
+
+            while (true)
             {
+                Console.Write("Enter distance in kilometers: ");
+                if (double.TryParse(Console.ReadLine(), out distanceKm) && distanceKm >= 0)
+                    break;
+
                 Console.WriteLine("Invalid input. Distance must be a non-negative number.");
-                return;
             }
 
             Console.WriteLine($"Meters: {distanceKm * 1000:F2}");
@@ -37,11 +45,15 @@ namespace PracticeQuestions.Modules
 
         internal void ReverseNumber()
         {
-            Console.Write("Enter a five-digit number: ");
-            if (!int.TryParse(Console.ReadLine(), out int number) || number < 10000 || number > 99999)
+            int number;
+
+            while (true)
             {
+                Console.Write("Enter a five-digit number: ");
+                if (int.TryParse(Console.ReadLine(), out number) && number >= 10000 && number <= 99999)
+                    break;
+
                 Console.WriteLine("Invalid input. Please enter a valid five-digit number.");
-                return;
             }
 
             int reversed = 0, temp = number;

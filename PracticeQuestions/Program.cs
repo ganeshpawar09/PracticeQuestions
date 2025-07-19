@@ -7,9 +7,12 @@ namespace PracticeQuestions
     {
         static void Main(string[] args)
         {
-            var basicIO = new BasicInputOutput();
-            var decision = new Decision();
-            var loop = new Loop();
+            var basicIOQue = new BasicInputOutputQue();
+            var decisionQue = new DecisionQue();
+            var loopQue = new LoopQue();
+            var arrayQue = new ArrayQue();
+            var methodQue = new MethodQue();
+            var coordinateGeo = new CoordinateGeometry();
 
             while (true)
             {
@@ -26,6 +29,15 @@ namespace PracticeQuestions
                 Console.WriteLine("10. Count Pos/Neg/Zero (Loops)");
                 Console.WriteLine("11. Triangle Pattern (Loops)");
                 Console.WriteLine("12. Intelligence Table (Loops)");
+                Console.WriteLine("13. Compound Interest (Array)");
+                Console.WriteLine("14. Largest Plot Area (Array)");
+                Console.WriteLine("15. Check Leap Year (Method)");
+                Console.WriteLine("16. Distance Between Two Points (Method)");
+                Console.WriteLine("17. Area of Triangle (Method)");
+                Console.WriteLine("18. Check Point Inside Triangle (Method)");
+                Console.WriteLine("19. Distance Between Two Points (CoordinateGeometry)");
+                Console.WriteLine("20. Area of Triangle (CoordinateGeometry)");
+                Console.WriteLine("21. Distance Between Two 3D Points (CoordinateGeometry)");
                 Console.WriteLine("0. Exit");
                 Console.Write("Enter your choice: ");
 
@@ -40,40 +52,67 @@ namespace PracticeQuestions
                 switch (choice)
                 {
                     case 1:
-                        basicIO.CalculateGrossSalary();
+                        basicIOQue.CalculateGrossSalary();
                         break;
                     case 2:
-                        basicIO.ConvertDistance();
+                        basicIOQue.ConvertDistance();
                         break;
                     case 3:
-                        basicIO.ReverseNumber();
+                        basicIOQue.ReverseNumber();
                         break;
                     case 4:
-                        decision.CheckCharacterType();
+                        decisionQue.CheckCharacterType();
                         break;
                     case 5:
-                        decision.CheckPalindromeNumber();
+                        decisionQue.CheckPalindromeNumber();
                         break;
                     case 6:
-                        decision.CheckCollinearPoints();
+                        decisionQue.CheckCollinearPoints();
                         break;
                     case 7:
-                        decision.DetermineSteelGrade();
+                        decisionQue.DetermineSteelGrade();
                         break;
                     case 8:
-                        decision.PerformCalculator();
+                        decisionQue.PerformCalculator();
                         break;
                     case 9:
-                        loop.CalculateFactorial();
+                        loopQue.CalculateFactorial();
                         break;
                     case 10:
-                        loop.CountNumberTypes();
+                        loopQue.CountNumberTypes();
                         break;
                     case 11:
-                        loop.PrintTrianglePattern();
+                        loopQue.PrintTrianglePattern();
                         break;
                     case 12:
-                        loop.GenerateIntelligenceTable();
+                        loopQue.GenerateIntelligenceTable();
+                        break;
+                    case 13:
+                        arrayQue.CompoundInterest();
+                        break;
+                    case 14:
+                        arrayQue.FindLargestPlotArea();
+                        break;
+                    case 15:
+                        methodQue.CheckLeapYear();
+                        break;
+                    case 16:
+                        methodQue.CalculateDistance();
+                        break;
+                    case 17:
+                        methodQue.CalculateAreaOfTriangle();
+                        break;
+                    case 18:
+                        methodQue.IsPointInsideTriangle();
+                        break;
+                    case 19:
+                        coordinateGeo.CalculateDistance2D();
+                        break;
+                    case 20:
+                        coordinateGeo.CalculateAreaOfTriangle();
+                        break;
+                    case 21:
+                        coordinateGeo.CalculateDistanceIn3D(); 
                         break;
                     case 0:
                         Console.WriteLine("Exiting...");
